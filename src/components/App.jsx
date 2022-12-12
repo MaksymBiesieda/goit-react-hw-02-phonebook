@@ -32,7 +32,7 @@ export default class App extends Component  {
     return contacts.filter(contact => (contact.name.toLowerCase().includes(filter.toLowerCase())))
   }
 
-  DeleteContact = (id) => {
+  deleteContact = (id) => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));

@@ -4,6 +4,11 @@ import css from './ContactForm.module.css';
 
 export default class ContactForm extends Component  {
 
+  static propTypes = {
+  onFormSubmit: PropTypes.func.isRequired,
+  contacts: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string.isRequired, name: PropTypes.string.isRequired, number: PropTypes.string.isRequired, }),),
+  };
+
   state = {
   name: '',
   number: ''
@@ -19,8 +24,11 @@ export default class ContactForm extends Component  {
     const { name } = this.state;
      event.preventDefault();
      const isSameName = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
-     if (isSameName) { alert(`${name} is already in contacts`) } else { this.props.onFormSubmit(this.state) }
-     this.reset();
+    if (isSameName) { alert(`${name} is already in contacts`) } else {
+      this.props.onFormSubmit(this.state)
+      this.reset();
+    }
+     
   }
 
   reset = () => {
@@ -63,9 +71,4 @@ export default class ContactForm extends Component  {
 )
   }
    
-}
-
-ContactForm.propTypes = {
-  onFormSubmit: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string.isRequired, name: PropTypes.string.isRequired, number: PropTypes.string.isRequired, }),),
 }
