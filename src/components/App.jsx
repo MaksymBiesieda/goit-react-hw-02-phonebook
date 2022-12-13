@@ -47,7 +47,7 @@ export default class App extends Component  {
         <ContactForm onFormSubmit={this.formSubmitHandler} contacts={contacts} />
         <h2 className={css.contacts_title}>Contacts</h2>
         <Filter onFilterChange={this.filterHandler}/>
-        <ContactList data={contacts} filterResult={filterResult} onDeleteContact={ this.DeleteContact} />
+        <ContactList  filterResult={filterResult} onDeleteContact={ this.deleteContact} />
     </div> 
     )
   };
